@@ -4,14 +4,40 @@ output:
   html_document:
     keep_md: true
 ---
+This assignment makes use of data from a personal activity monitoring
+device. This device collects data at 5 minute intervals through out the
+day. The data consists of two months of data from an anonymous
+individual collected during the months of October and November, 2012
+and include the number of steps taken in 5 minute intervals each day.
 
+```{r}
+library(plyr)
+library(ggplot2)
+```
 
 ## Loading and preprocessing the data
+The data used for this analysis is included in the Git repository with this report. The original raw data is
+available in the activity.zip file located in the root level of the repository. The original file is available on the course web site here: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip).
 
-
+```{r}
+unzip("activity.zip")
+data <- read.csv("activity.csv")
+data$date <- as.Date(data$date)
+```
 
 ## What is mean total number of steps taken per day?
+Ignoring missing values, show the total number of steps taken per day  
+```{r}
+data_summary <- ddply(data, c("date"), summarize,
+                      total = sum(steps,na.rm = TRUE),
+                      mean = mean(steps, na.rm = TRUE),
+                      median = median(steps, na.rm = TRUE))
+```
 
+Calculate the mean and median for each day
+```{r}
+
+```
 
 
 ## What is the average daily activity pattern?
