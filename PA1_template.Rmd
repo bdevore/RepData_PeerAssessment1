@@ -32,6 +32,8 @@ data_summary <- ddply(data, c("date"), summarize,
                       total = sum(steps,na.rm = TRUE),
                       mean = mean(steps, na.rm = TRUE),
                       median = median(steps, na.rm = TRUE))
+
+ggplot(data=data_summary,aes(x=date,y=total)) + geom_bar(stat="identity")
 ```
 
 Calculate the mean and median for each day
