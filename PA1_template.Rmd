@@ -46,6 +46,15 @@ Median: `r daily_median`
 
 ## What is the average daily activity pattern?
 
+Plot a chart of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+```{r}
+avg_summary <- ddply(data, c("interval"), summarize, mn = mean(steps, na.rm=TRUE))
+ggplot(data=avg_summary, aes(x=interval,y=mn)) + geom_line()
+
+max_interval <- avg_summary[max(avg_summary$mn) == avg_summary$mn,"interval"]
+```
+
+The highest average time interval is `r max_interval`
 
 
 ## Imputing missing values
