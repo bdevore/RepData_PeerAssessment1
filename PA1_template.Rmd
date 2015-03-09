@@ -59,6 +59,17 @@ The highest average time interval is `r max_interval`
 
 ## Imputing missing values
 
+Need to identify the total number of rows in the dataset with missing values
+```{r}
+missing_val_count <- nrow(data[is.na(data$steps),])
+```
+There are `r missing_val_count` rows with missing values
+
+For this data set we will fill in those missing values to help smooth out the data for analysis. For this analysis we will replace the missing value with the mean step count for the same day.
+
+```{r}
+
+```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
