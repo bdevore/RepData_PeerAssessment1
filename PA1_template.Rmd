@@ -36,11 +36,13 @@ data_summary <- ddply(data, c("date"), summarize,
 ggplot(data=data_summary,aes(x=date,y=total)) + geom_bar(stat="identity")
 ```
 
-Calculate the mean and median for each day
+Calculate the mean and median number of steps taken
 ```{r}
-
+daily_mean <- mean(data_summary$total,na.rm=TRUE)
+daily_median <- median(data_summary$total,na.rm=TRUE)
 ```
-
+Mean: `r daily_mean`  
+Median: `r daily_median`
 
 ## What is the average daily activity pattern?
 
